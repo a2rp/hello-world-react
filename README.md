@@ -27,9 +27,10 @@ npm run dev
 ## Deployment
 
 ```bash
-npm run build
 npm run deploy
 ```
+
+The deploy script builds the app before publishing `dist` to the `gh-pages` branch.
 
 Live app: [https://a2rp.github.io/hello-world-react/](https://a2rp.github.io/hello-world-react/)
 

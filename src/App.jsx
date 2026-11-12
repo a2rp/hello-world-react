@@ -23,7 +23,9 @@ function App() {
     const menuButtonRef = useRef(null);
     const closeMenu = () => {
         setMenuOpen(false);
-        menuButtonRef.current?.focus();
+        if (window.matchMedia("(max-width: 620px)").matches) {
+            menuButtonRef.current?.focus();
+        }
     };
 
     useEffect(() => {
@@ -57,7 +59,7 @@ function App() {
                         <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Ashish Ranjan logo" />
                         <span><small>REACT STARTER</small><strong>Hello World</strong></span>
                     </Brand>
-                    <Navigation id="primary-navigation" $open={menuOpen}>
+                    <Navigation id="primary-navigation" aria-label="Primary navigation" $open={menuOpen}>
                         <a ref={firstNavLinkRef} href="#home" onClick={closeMenu}>Home</a>
                         <a href="https://react.dev/" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>React docs <FiArrowUpRight aria-hidden="true" /></a>
                         <a href="https://github.com/a2rp/hello-world-react" target="_blank" rel="noopener noreferrer" onClick={closeMenu}><FaGithub aria-hidden="true" /> Source</a>
@@ -90,7 +92,7 @@ function App() {
 
             <Footer>
                 <FooterTop>
-                    <Brand><img src={`${import.meta.env.BASE_URL}logo.png`} alt="Ashish Ranjan logo" /> <strong>Hello World starter</strong></Brand>
+                    <Brand as="div"><img src={`${import.meta.env.BASE_URL}logo.png`} alt="Ashish Ranjan logo" /> <strong>Hello World starter</strong></Brand>
                     <SocialLinks aria-label="Developer and support links">
                         {footerLinks.map(([label, href, IconComponent]) => <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noopener noreferrer" : undefined} aria-label={label} title={label}>{createElement(IconComponent, { "aria-hidden": true })}</a>)}
                     </SocialLinks>
